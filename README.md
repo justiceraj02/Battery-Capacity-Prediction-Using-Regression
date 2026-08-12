@@ -2,6 +2,8 @@
 <!-- readme: Bhagy3sh,BRRAIN7,aryansahare,AnveshaSingh contributors -start -->
 <!-- readme: contributors -end -->
 
+🚀 **Live App Deployment:** [https://battery-capacity-prediction-using.onrender.com](https://battery-capacity-prediction-using.onrender.com)
+
 ## 1. Introduction
 Electric vehicles (EVs) are transforming transportation with eco-friendly alternatives to gasoline-powered cars. However, battery life and range anxiety remain significant challenges. Accurately predicting battery capacity is crucial for optimizing charging schedules, extending battery lifespan, and enhancing the overall EV user experience.
 
@@ -59,16 +61,12 @@ source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
 pip install -r requirements.txt
 ```
 
-4. **Run the Jupyter Notebook**
+4. **Run the Application Locally**
 ```bash
-cd working_directory
-jupyter notebook
+python app.py
 ```
+Open `http://localhost:5000` in your browser.
 
-4. **Deploy the Model**
-```bash
-cd ../!app
-flask run
-```
-5. **Access the web application**\
-Host the web application on any hosting of your choice, preferably Python Anywhere
+5. **Deploy the Model**
+The application is pre-configured to be deployed on Render using the provided `render.yaml` and `Procfile`.
+Just connect your GitHub repository to Render and create a New Web Service!
