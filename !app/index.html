@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capacity Predictor</title>
+    <link rel="stylesheet" href="style.css"> <!-- Make a static folder and place .css files into it.
+    
+    /home/wd/static/style.css
+    
+    Once done, change href="style.css" to
+    href = {{ url_for('static', filename='style.css') }}-->
+
+    <script type="text/javascript">
+    document.querySelector('form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var formData = new FormData(this);
+    fetch('/prediction', {
+        method: 'POST',
+        body: formData
+    }).then(response => response.text())
+      .then(result => {
+          // Handle result
+          console.log(result);
+      }).catch(error => {
+          console.error('Error:', error);
+      });
+});
+</script>
+
+</head>
+<body>
+    <section class="page1">
+        <div class="formhead">
+            <center>
+                <h1>Lithium-Ion Battery Capacity Predictor</h1>
+            </center>
+        </div>
+        <div class="form">
+            <form action="{{ url_for('prediction') }}" class="formpage" method="POST">
+                <div class="formcnt">
+                    <center>
+                    <div class="formgrp"><input type="text" class="prompt" name="cycle" placeholder="Enter Number of Cycles"><div class="icon">?</div><div class="info">Number of times a battery can be fully charged and discharged</div><br></div>
+                    <div class="formgrp"><input type="text" class="prompt" name="voltage_battery" placeholder="Enter Battery Voltage"><div class="icon">?</div><div class="info">Battery terminal voltage in Volts</div><br></div>
+                    <div class="formgrp"><input type="text" class="prompt" name="temp_battery" placeholder="Enter Battery Temperature"><div class="icon">?</div><div class="info">Battery temperature in degree C</div><br></div>
+                    <div class="formgrp"><input type="text" class="prompt" name="time" placeholder="Enter Time"><div class="icon">?</div><div class="info">Time vector for the cycle in secs</div><br></div>
+                    <div class="null"><input type="submit" value="Check Capacity" class="submitbtn"></div>  
+                    </center>
+                </div>
+
+            </form>
+        </div>
+    </section>
+</body>
+</html>
